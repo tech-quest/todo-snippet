@@ -13,7 +13,7 @@ if (empty($_POST['task']) && !empty($_POST['deadline'])) {
     exit();
 }
 
-require_once __DIR__ . '/utils/pdo.php';
+require_once __DIR__ . '/../utils/pdo.php';
 $sql =
     'INSERT INTO tasks(user_id, contents, category_id, deadline) VALUES (:userId, :contents, :categoryId, :deadline)';
 
@@ -23,5 +23,5 @@ $statement->bindValue(':contents', $task, PDO::PARAM_STR);
 $statement->bindValue(':categoryId', $categoryId, PDO::PARAM_INT);
 $statement->bindValue(':deadline', $deadline, PDO::PARAM_STR);
 $statement->execute();
-header('Location: ./index.php');
+header('Location: ../index.php');
 exit();

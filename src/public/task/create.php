@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/utils/pdo.php';
+require_once __DIR__ . '/../utils/pdo.php';
 $sql = 'SELECT * FROM categories';
 $statement = $pdo->prepare($sql);
 $statement->execute();
@@ -28,8 +28,14 @@ $_SESSION['error'] = '';
                 <p class="text-red-600 mb-5 text-center"><?php echo $error; ?></p>
             <?php endforeach; ?>
         </div>
+
+        <div class="text-blue-600 mb-2">
+            <a href="../category/create.php">カテゴリを追加</a><br>
+        </div>
+
         <form action=./store.php method=POST>
             <select name="categoryId">
+                <option value="">カテゴリを選んでください</option>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo $category[
                         'id'
@@ -40,7 +46,7 @@ $_SESSION['error'] = '';
             <input class='border-2 border-gray-300' type=date name=deadline>
             <button class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mb-5' type="submit">追加</button>
         </form>
-        <a class="text-blue-600" href=./index.php>戻る</a>
+        <a class="text-blue-600" href=../index.php>戻る</a>
     </div>
 </body>
 

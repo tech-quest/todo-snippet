@@ -153,6 +153,8 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
             <th class="px-4 py-2">締め切り</th>
             <th class="px-4 py-2">カテゴリー名</th>
             <th class="px-4 py-2">完了未完了</th>
+            <th class="px-4 py-2">編集</th>
+            <th class="px-4 py-2">削除</th>
           </tr>
         </thead>
 
@@ -165,6 +167,8 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
                   'category_name'
               ]; ?></td>
               <td class="border px-4 py-2"><?php echo $task['status']; ?></td>
+              <td class="border px-4 py-2"><button class="text-white bg-green-300 border-0 py-1 px-1 focus:outline-none hover:bg-green-400 rounded text-lg">編集</button></td>
+              <td class="border px-4 py-2"><button class="text-white bg-red-300 border-0 py-1 px-1 focus:outline-none hover:bg-red-400 rounded text-lg">削除</button></td>
             </tr>
           </tbody>
         <?php endforeach; ?>

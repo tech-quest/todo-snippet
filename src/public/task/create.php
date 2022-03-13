@@ -30,7 +30,7 @@ $_SESSION['error'] = '';
         </div>
 
         <div class="text-blue-600 mb-2">
-            <a href="../category/create.php">カテゴリを追加</a><br>
+            <a href="../category/index.php">カテゴリを追加</a><br>
         </div>
 
         <form action=./store.php method=POST>

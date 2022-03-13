@@ -146,7 +146,7 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <div class="container px-5 mx-auto text-blue-600 mb-2">
-    <a href="task/create.php">メモを追加</a><br>
+    <a href="task/create.php">タスクを追加</a><br>
   </div>
 
   <div class="container px-5 mx-auto">

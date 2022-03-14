@@ -20,7 +20,7 @@ DBの作成
 CREATE DATABASE todo-list
 ```
 
-userテーブルの作成
+usersテーブルの作成
 
 ```
 CREATE TABLE users ( id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_name varchar(255) NOT NULL, mail varchar(255) NOT NULL, password varchar(255) NOT NULL created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

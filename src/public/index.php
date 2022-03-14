@@ -19,17 +19,9 @@ $statement = $pdo->prepare($pullDownMenuSql);
 $statement->execute();
 $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_GET['order'])) {
-    $direction = $_GET['order'];
-} else {
-    $direction = 'desc';
-}
+$direction = $_GET['order'] ?? 'desc';
 
-if (isset($_GET['search'])) {
-    $contents = '%' . $_GET['search'] . '%';
-} else {
-    $contents = '%%';
-}
+$searchWord = $_GET['search'] ?? '';
 
 if (isset($_GET['status']) && $_GET['status'] == 'done') {
     $status = 'tasks.status = 1';
@@ -39,11 +31,9 @@ if (isset($_GET['status']) && $_GET['status'] == 'done') {
     $status = 'tasks.status in (0,1) ';
 }
 
-if ($_GET['category_id']) {
-    $category_id = 'AND tasks.category_id = ' . $_GET['category_id'];
-} else {
-    $category_id = '';
-}
+$category_id = isset($_GET['category_id'])
+    ? 'AND tasks.category_id = ' . $_GET['category_id']
+    : '';
 
 $displaySql = <<<EOF
   SELECT 
@@ -70,7 +60,7 @@ $displaySql = <<<EOF
 EOF;
 
 $statement = $pdo->prepare($displaySql);
-$statement->bindValue(':contents', $contents, PDO::PARAM_STR);
+$statement->bindValue(':contents', '%' . $searchWord . '%', PDO::PARAM_STR);
 $statement->execute();
 $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -85,6 +75,9 @@ $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     <title>todo view</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
+
+<?php require_once __DIR__ . '/utils/header.php'; ?>
 
 <body>
   <div class="container mt-5 px-5 mx-auto flex mb-8">
